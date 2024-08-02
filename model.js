@@ -105,7 +105,6 @@ async function getBoatsAuth(ownerID, cursor) {
     query = query.start(cursor);
   }
   const boats = await datastore.runQuery(query);
-  // console.log(boats);
   const results = {};
   results.items = [];
   for (idx in boats[0]) {
@@ -127,8 +126,6 @@ async function getBoatsAuth(ownerID, cursor) {
     .filter("owner", "=", ownerID);
   const [totalBoats] = await datastore.runQuery(countQuery);
   results.total = totalBoats.length;
-  // console.log(totalBoats.length);
-  // console.log(results);
   return [200, results];
 }
 
@@ -222,13 +219,11 @@ async function deleteBoat(boatID, requester) {
 }
 
 async function getAllCargo(cursor) {
-  // console.log(cursor);
   let query = datastore.createQuery("Cargo").limit(PAGE_SIZE);
   if (cursor !== "") {
     query = query.start(cursor);
   }
   const cargo = await datastore.runQuery(query);
-  // console.log(cargo);
   const results = {};
   results.items = [];
   for (idx in cargo[0]) {
@@ -283,7 +278,6 @@ async function updateCargo(cargo_id, cargoData) {
   try {
     const thisCargo = new Cargo({});
     const queryStatus = await thisCargo.populateFromDB(cargo_id);
-    console.log("queryStatus:", queryStatus);
     if (!queryStatus) {
       return [404, { Error: "No cargo with this cargo_id exists" }];
     }
