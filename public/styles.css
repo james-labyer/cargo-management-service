@@ -1,0 +1,125 @@
+/* define color palette */
+:root {
+  --background-color: #e3fbf8;
+  --border-color: #07beb8;
+  --code-color: #a5e4dc;
+}
+
+/* font */
+.montserrat-normal {
+  font-family: "Montserrat", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 400;
+  font-style: normal;
+}
+
+html {
+  box-sizing: border-box;
+  line-height: 1.5;
+  background-color: var(--background-color);
+}
+
+#navbar {
+  position: fixed;
+  width: 400px;
+  height: 100%;
+  top: 0;
+  left: 0;
+  border-right: solid var(--border-color) 2px;
+  overflow-y: auto;
+  overflow-x: hidden;
+  background-color: var(--background-color);
+}
+
+#navbar div {
+  border-bottom: solid var(--border-color) 1px;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  padding-left: 40px;
+}
+
+#navbar a {
+  text-decoration: none;
+  color: black;
+  display: block;
+}
+
+#navbar div:hover {
+  background-color: var(--border-color);
+}
+
+header {
+  font-weight: bold;
+}
+
+#navbar header {
+  font-size: 20px;
+  border-bottom: solid var(--border-color) 1px;
+  padding-top: 15px;
+  padding-left: 15px;
+  padding-bottom: 15px;
+}
+
+h1 {
+  border-bottom: 1px solid var(--border-color);
+}
+
+.main-section {
+  border-bottom: 1px solid var(--border-color);
+}
+
+.main-section header {
+  font-size: 21px;
+}
+
+.nav-link {
+  display: block;
+  padding-left: 40px;
+}
+
+.call-category {
+  font-weight: bold;
+  margin-top: 0;
+  margin-bottom: 0;
+}
+
+.doc-content {
+  position: absolute;
+  padding-left: 10px;
+  margin-left: 400px;
+}
+
+.result-code {
+  display: block;
+  border-radius: 5px;
+  padding: 10px;
+  margin: 10px;
+  background-color: var(--code-color);
+}
+
+.button {
+  background-color: #066b67;
+  border-radius: 2px;
+  border: 1px solid #066b67;
+  color: #fff;
+  padding: 5px;
+  margin: 10px;
+}
+
+#Remove_cargo_from_boat {
+  padding-bottom: 1rem;
+}
+
+@media (max-width: 450px) {
+  #navbar {
+    position: absolute;
+    width: 100%;
+    max-height: 350px;
+    z-index: 1;
+  }
+  .doc-content {
+    position: relative;
+    margin-top: 355px;
+    margin-left: 0px;
+  }
+}

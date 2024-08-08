@@ -1,4 +1,5 @@
 const express = require("express");
+const serveStatic = require("serve-static");
 const { expressjwt: jwt } = require("express-jwt");
 const jwksRsa = require("jwks-rsa");
 const { auth, requiresAuth } = require("express-openid-connect");
@@ -30,6 +31,13 @@ const config = {
 };
 
 const app = express();
+
+// app.use("ship-solid.svg", express.static("public/ship-solid.svg"));
+// app.use(express.static(path.join(__dirname, "public")));
+app.use(
+  // serveStatic(path.join(__dirname, "public"), { index: ["welcome.html"] })
+  serveStatic(path.join(__dirname, "public"))
+);
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(auth(config));
@@ -50,7 +58,9 @@ const checkJwt = jwt({
   credentialsRequired: false,
 });
 
-/* ------------- Routes ------------- */
+/* ------------- ROUTES ------------- */
+
+/* ------------- pages -------------- */
 
 app.get("/", (req, res) => {
   if (req.oidc.isAuthenticated()) {
@@ -65,8 +75,10 @@ app.get("/", (req, res) => {
       };
       userLogin(userData)
         .then((user_id) => {
-          const userObj = { token: req.oidc.idToken, user_id: user_id };
-          res.json(userObj);
+          /* const userObj = { token: req.oidc.idToken, user_id: user_id };
+          res.json(userObj); */
+          const options = { root: path.join(__dirname) };
+          res.sendFile("public/main.html", options);
         })
         .catch((err) => {
           console.error(err);
@@ -75,8 +87,11 @@ app.get("/", (req, res) => {
     }
   } else {
     const options = { root: path.join(__dirname) };
-    res.sendFile("welcome.html", options);
+    res.sendFile("public/index.html", options);
   }
+  // const options = { root: path.join(__dirname) };
+  // res.set("Content-Type", "text/css");
+  // res.sendFile("public/main.html", options);
 });
 
 app.get("/profile", requiresAuth(), (req, res) => {
@@ -89,6 +104,16 @@ app.get("/profile", requiresAuth(), (req, res) => {
 
 app.get("/callback", (req, res) => {
   console.log("callback");
+});
+
+app.get("/main.html", (req, res) => {
+  if (req.oidc.isAuthenticated()) {
+    const options = { root: path.join(__dirname) };
+    res.sendFile("public/main.html", options);
+  } else {
+    const options = { root: path.join(__dirname) };
+    res.sendFile("public/index.html", options);
+  }
 });
 
 /* ------------- /users ------------- */
