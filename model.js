@@ -1,5 +1,4 @@
 const { Datastore } = require("@google-cloud/datastore");
-const axios = require("axios");
 require("dotenv").config();
 const { User, Boat, Cargo } = require("./classes");
 
@@ -77,7 +76,6 @@ async function getAllUsers() {
       boats: users[idx].boats,
       created_at: users[idx].created_at,
       updated_at: users[idx].updated_at,
-      // self: `${process.env.APP_URL}/users/${users[idx][datastore.KEY].id}`,
     };
     niceUsers.push(userObj);
   }

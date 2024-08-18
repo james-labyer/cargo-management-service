@@ -51,6 +51,7 @@
       href="ship-solid.svg"
       type="image/svg+xml"
     />
+    <script src="demo.js"></script>
   </head>
   <body>
     <main id="main-doc">
@@ -58,13 +59,6 @@
         <header>
           <i class="fa-solid fa-ship"></i> Cargo Service API Calls
         </header>
-        <!--<div>
-          <a
-            class="nav-link"
-            href="#Welcome"
-            >Welcome</a
-          >
-        </div>-->
         <div>
           <p class="call-category">Manage Boats</p>
         </div>
@@ -92,15 +86,15 @@
         <div>
           <a
             class="nav-link"
-            href="Update_boat"
-            >Update boat (PATCH)</a
+            href="#Edit_boat"
+            >Edit boat (PATCH)</a
           >
         </div>
         <div>
           <a
             class="nav-link"
-            href="#Edit_boat"
-            >Edit boat (PUT)</a
+            href="#Update_boat"
+            >Update boat (PUT)</a
           >
         </div>
         <div>
@@ -179,7 +173,6 @@
           class="main-section"
           id="Welcome"
         >
-          <!--<header>Welcome</header>-->
           <p>
             Welcome to the demo page for the Cargo Management Service API calls.
             You can use this page to test each of the API endpoints for the
@@ -197,42 +190,125 @@
           id="Add_boat"
         >
           <header>Add boat</header>
-          <p>Happy Testing!</p>
+          <div>
+            <form>
+              <fieldset>
+                <p>Please provide values all of the following fields:</p>
+                <label id="add-boat-name-label">Name <input id="add-boat-name" type="text"></input></label>
+                <label id="add-boat-type-label">Type <input id="add-boat-type" type="text"></input></label>
+                <label id="add-boat-length-label">Length <input id="add-boat-length" type="number"></input></label>
+              </fieldset>
+            </form>
+            <button
+              class="button"
+              onclick="addABoat()"
+            >
+              Add Boat
+            </button>
+          </div>
+          <code id="add-boat-result"></code>
         </section>
         <section
           class="main-section"
           id="Get_all_boats"
         >
           <header>Get all boats</header>
-          <p>Happy Testing!</p>
+          <div>
+            <button
+              class="button"
+              onclick="getAllBoats()"
+            >
+              Get All Boats
+            </button>
+          </div>
+          <code id="get-all-boats-result"></code>
         </section>
         <section
           class="main-section"
           id="Get_a_boat"
         >
           <header>Get a boat</header>
-          <p>Happy Testing!</p>
-        </section>
-        <section
-          class="main-section"
-          id="Update_boat"
-        >
-          <header>Update boat (PATCH)</header>
-          <p>Happy Testing!</p>
+          <div>
+            <form><fieldset><label id="get-boat-id-label">Boat ID <input id="get-boat-id" type="text" required></input></label></fieldset></form>
+            <button
+              class="button"
+              onclick="getABoat()"
+            >
+              Get A Boat
+            </button>
+          </div>
+          <code id="get-a-boat-result"></code>
         </section>
         <section
           class="main-section"
           id="Edit_boat"
         >
-          <header>Edit boat (PUT)</header>
-          <p>Happy Testing!</p>
+          <header>Edit boat (PATCH)</header>
+          <div>
+            <form>
+              <fieldset>
+                <p>Enter the ID of a boat you own</p>
+                <label id="patch-boat-id-label">Boat ID <input id="patch-boat-id" type="text" required></input></label>
+                <p>Please provide new values for at least one of the following fields:</p>
+                <label id="patch-boat-name-label">Name <input id="patch-boat-name" type="text"></input></label>
+                <label id="patch-boat-type-label">Type <input id="patch-boat-type" type="text"></input></label>
+                <label id="patch-boat-length-label">Length <input id="patch-boat-length" type="number"></input></label>
+              </fieldset>
+            </form>
+            <button
+              class="button"
+              onclick="patchABoat()"
+            >
+              Edit Boat
+            </button>
+          </div>
+          <code id="patch-a-boat-result"></code>
+        </section>
+        <section
+          class="main-section"
+          id="Update_boat"
+        >
+          <header>Update boat (PUT)</header>
+          <div>
+            <form>
+              <fieldset>
+                <p>Enter the ID of a boat you own</p>
+                <label id="put-boat-id-label">Boat ID <input id="put-boat-id" type="text" required></input></label>
+                <p>Please provide new values for all of the following fields:</p>
+                <label id="put-boat-name-label">Name <input id="put-boat-name" type="text"></input></label>
+                <label id="put-boat-type-label">Type <input id="put-boat-type" type="text"></input></label>
+                <label id="put-boat-length-label">Length <input id="put-boat-length" type="number"></input></label>
+              </fieldset>
+            </form>
+            <button
+              class="button"
+              onclick="putABoat()"
+            >
+              Update Boat
+            </button>
+          </div>
+          <code id="put-a-boat-result"></code>
         </section>
         <section
           class="main-section"
           id="Delete boat"
         >
           <header>Delete boat</header>
-          <p>Happy Testing!</p>
+          <div>
+            <form>
+              <fieldset>
+                <p>Enter the ID of a boat you own</p>
+                <label id="delete-boat-id-label">Boat ID <input id="delete-boat-id" type="text" required></input></label>
+              </fieldset>
+            </form>
+            <button
+              class="button"
+              onclick="deleteABoat()"
+            >
+              Delete Boat
+            </button>
+          </div>
+          <code id="delete-a-boat-result"></code>
         </section>
         <h1>Manage Cargo</h1>
         <section
@@ -254,7 +330,15 @@
           id="Get_all_cargo"
         >
           <header>Get all cargo</header>
-          <p>Happy Testing!</p>
+          <div>
+            <button
+              class="button"
+              onclick="getAllCargo()"
+            >
+              Get All Cargo
+            </button>
+          </div>
+          <code id="get-all-cargo-result"></code>
         </section>
         <section
           class="main-section"
