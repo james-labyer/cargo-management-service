@@ -131,15 +131,15 @@
         <div>
           <a
             class="nav-link"
-            href="#Update_cargo"
-            >Update cargo (PATCH)</a
+            href="#Edit_cargo"
+            >Edit cargo (PATCH)</a
           >
         </div>
         <div>
           <a
             class="nav-link"
-            href="#Edit_cargo"
-            >Edit cargo (PUT)</a
+            href="#Update_cargo"
+            >Update cargo (PUT)</a
           >
         </div>
         <div>
@@ -193,7 +193,7 @@
           <div>
             <form>
               <fieldset>
-                <p>Please provide values all of the following fields:</p>
+                <p>Please provide values for all of the following fields:</p>
                 <label id="add-boat-name-label">Name <input id="add-boat-name" type="text"></input></label>
                 <label id="add-boat-type-label">Type <input id="add-boat-type" type="text"></input></label>
                 <label id="add-boat-length-label">Length <input id="add-boat-length" type="number"></input></label>
@@ -316,14 +316,38 @@
           id="Add_cargo"
         >
           <header>Add cargo</header>
-          <p>Happy Testing!</p>
+          <div>
+            <form>
+              <fieldset>
+                <p>Please provide values for both of the following fields:</p>
+                <label id="add-cargo-item-label">Item <input id="add-cargo-item" type="text"></input></label>
+                <label id="add-cargo-volume-label">Volume <input id="add-cargo-volume" type="number"></input></label>
+              </fieldset>
+            </form>
+            <button
+              class="button"
+              onclick="addACargo()"
+            >
+              Add Cargo
+            </button>
+          </div>
+          <code id="add-cargo-result"></code>
         </section>
         <section
           class="main-section"
           id="Get_a_cargo"
         >
           <header>Get a cargo</header>
-          <p>Happy Testing!</p>
+          <div>
+            <form><fieldset><label id="get-cargo-id-label">Cargo ID <input id="get-cargo-id" type="text" required></input></label></fieldset></form>
+            <button
+              class="button"
+              onclick="getACargo()"
+            >
+              Get A Cargo
+            </button>
+          </div>
+          <code id="get-a-cargo-result"></code>
         </section>
         <section
           class="main-section"
@@ -342,24 +366,72 @@
         </section>
         <section
           class="main-section"
-          id="Update_cargo"
+          id="Edit_cargo"
         >
-          <header>Update cargo (PATCH)</header>
-          <p>Happy Testing!</p>
+          <header>Edit cargo (PATCH)</header>
+          <div>
+            <form>
+              <fieldset>
+                <p>Enter the ID of a cargo you own</p>
+                <label id="patch-cargo-id-label">Cargo ID <input id="patch-cargo-id" type="text" required></input></label>
+                <p>Please provide new values for at least one of the following fields:</p>
+                <label id="patch-cargo-item-label">Item <input id="patch-cargo-item" type="text"></input></label>
+                <label id="patch-cargo-volume-label">Volume <input id="patch-cargo-volume" type="number"></input></label>
+              </fieldset>
+            </form>
+            <button
+              class="button"
+              onclick="patchACargo()"
+            >
+              Edit Cargo
+            </button>
+          </div>
+          <code id="patch-a-cargo-result"></code>
         </section>
         <section
           class="main-section"
-          id="Edit_cargo"
+          id="Update_cargo"
         >
-          <header>Edit cargo (PUT)</header>
-          <p>Happy Testing!</p>
+          <header>Update cargo (PUT)</header>
+          <div>
+            <form>
+              <fieldset>
+                <p>Enter the ID of a cargo you own</p>
+                <label id="put-cargo-id-label">Cargo ID <input id="put-cargo-id" type="text" required></input></label>
+                <p>Please provide new values for both of the following fields:</p>
+                <label id="put-cargo-item-label">Item <input id="put-cargo-item" type="text"></input></label>
+                <label id="put-cargo-volume-label">Volume <input id="put-cargo-volume" type="number"></input></label>
+              </fieldset>
+            </form>
+            <button
+              class="button"
+              onclick="putACargo()"
+            >
+              Update Cargo
+            </button>
+          </div>
+          <code id="put-a-cargo-result"></code>
         </section>
         <section
           class="main-section"
           id="Delete_cargo"
         >
           <header>Delete cargo</header>
-          <p>Happy Testing!</p>
+          <div>
+            <form>
+              <fieldset>
+                <p>Enter the ID of a cargo you own</p>
+                <label id="delete-cargo-id-label">Cargo ID <input id="delete-cargo-id" type="text" required></input></label>
+              </fieldset>
+            </form>
+            <button
+              class="button"
+              onclick="deleteACargo()"
+            >
+              Delete Cargo
+            </button>
+          </div>
+          <code id="delete-a-cargo-result"></code>
         </section>
         <h1>Manage Relationships</h1>
         <section
@@ -367,14 +439,46 @@
           id="Assign_cargo_to_boat"
         >
           <header>Assign cargo to boat</header>
-          <p>Happy Testing!</p>
+          <div>
+            <form>
+              <fieldset>
+                <p>Enter the ID of a cargo you own</p>
+                <label id="assign-cargo-id-label">Cargo ID <input id="assign-cargo-id" type="text" required></input></label>
+                <p>Enter the ID of a boat you own</p>
+                <label id="assign-boat-id-label">Boat ID <input id="assign-boat-id" type="text" required></input></label>
+              </fieldset>
+            </form>
+            <button
+              class="button"
+              onclick="assignCargotoBoat()"
+            >
+              Assign Cargo
+            </button>
+          </div>
+          <code id="assign-cargo-result"></code>
         </section>
         <section
           class="main-section"
           id="Remove_cargo_from_boat"
         >
           <header>Remove cargo from boat</header>
-          <p>Happy Testing!</p>
+          <div>
+            <form>
+              <fieldset>
+                <p>Enter the ID of a cargo you own</p>
+                <label id="remove-cargo-id-label">Cargo ID <input id="remove-cargo-id" type="text" required></input></label>
+                <p>Enter the ID of a boat you own</p>
+                <label id="remove-boat-id-label">Boat ID <input id="remove-boat-id" type="text" required></input></label>
+              </fieldset>
+            </form>
+            <button
+              class="button"
+              onclick="removeCargofromBoat()"
+            >
+              Remove Cargo
+            </button>
+          </div>
+          <code id="remove-cargo-result"></code>
         </section>
       </div>
     </main>

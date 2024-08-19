@@ -351,7 +351,7 @@ async function assignCargotoBoat(boat_id, cargo_id) {
 
   // check if Cargo is available for assignment
   if (thisCargo.getCarrier() !== null) {
-    return [403, { Error: "The cargo is already cargoed on another boat" }];
+    return [403, { Error: "The cargo is already assigned to another boat" }];
   }
 
   // check if Boat exists

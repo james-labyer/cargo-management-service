@@ -46,18 +46,14 @@ function execFetch(resultElem, apiURL, method, body) {
 
   fetch(apiURL, options)
     .then((response) => {
-      if (response.ok) {
-        if (method && method === "DELETE") {
-          return `Response status: ${response.status}`;
-        } else {
-          return response.json();
-        }
+      if (response.status === 204) {
+        return `Response status: ${response.status} No Content`;
       } else {
-        reportError(resultElem, `Response status: ${response.status}`);
+        return response.json();
       }
     })
     .then((data) => {
-      if (method && method === "DELETE") {
+      if (typeof data === "string") {
         strData = data;
       } else {
         strData = JSON.stringify(data);
@@ -100,12 +96,6 @@ function getABoat() {
     reportError(resultElem, "Missing Boat ID");
   }
   const apiURL = `${APP_URL}/boats/${formElem.value}`;
-  execFetch(resultElem, apiURL);
-}
-
-function getAllCargo() {
-  const resultElem = document.getElementById("get-all-cargo-result");
-  const apiURL = `${APP_URL}/cargo`;
   execFetch(resultElem, apiURL);
 }
 
@@ -162,5 +152,114 @@ function deleteABoat() {
     reportError(resultElem, "Missing Boat ID");
   }
   const apiURL = `${APP_URL}/boats/${formElem.value}`;
+  execFetch(resultElem, apiURL, "DELETE");
+}
+
+function addACargo() {
+  const resultElem = document.getElementById("add-cargo-result");
+  attrElems = [
+    ["item", document.getElementById("add-cargo-item")],
+    ["volume", document.getElementById("add-cargo-volume")],
+  ];
+  let body = {};
+  for (let i = 0; i < 2; i++) {
+    if (!attrElems[i][1].value) {
+      reportError(resultElem, "Missing at least one attribute");
+    }
+    body[attrElems[i][0]] = attrElems[i][1].value;
+  }
+  const apiURL = `${APP_URL}/cargo`;
+  execFetch(resultElem, apiURL, "POST", body);
+}
+
+function getACargo() {
+  const resultElem = document.getElementById("get-a-cargo-result");
+  const formElem = document.getElementById("get-cargo-id");
+  if (!formElem.value) {
+    reportError(resultElem, "Missing Cargo ID");
+  }
+  const apiURL = `${APP_URL}/cargo/${formElem.value}`;
+  execFetch(resultElem, apiURL);
+}
+
+function getAllCargo() {
+  const resultElem = document.getElementById("get-all-cargo-result");
+  const apiURL = `${APP_URL}/cargo`;
+  execFetch(resultElem, apiURL);
+}
+
+function patchACargo() {
+  const resultElem = document.getElementById("patch-a-cargo-result");
+  const cargoIDElem = document.getElementById("patch-cargo-id");
+  if (!cargoIDElem.value) {
+    reportError(resultElem, "Missing Cargo ID");
+  }
+  optionalElems = [
+    ["item", document.getElementById("patch-cargo-item")],
+    ["volume", document.getElementById("patch-cargo-volume")],
+  ];
+  let body = {};
+  for (let i = 0; i < 2; i++) {
+    if (optionalElems[i][1].value) {
+      body[optionalElems[i][0]] = optionalElems[i][1].value;
+    }
+  }
+  if (Object.keys(body).length === 0) {
+    reportError(resultElem, "No attributes provided");
+  }
+  const apiURL = `${APP_URL}/cargo/${cargoIDElem.value}`;
+  execFetch(resultElem, apiURL, "PATCH", body);
+}
+
+function putACargo() {
+  const resultElem = document.getElementById("put-a-cargo-result");
+  const cargoIDElem = document.getElementById("put-cargo-id");
+  if (!cargoIDElem.value) {
+    reportError(resultElem, "Missing Cargo ID");
+  }
+  attrElems = [
+    ["item", document.getElementById("put-cargo-item")],
+    ["volume", document.getElementById("put-cargo-volume")],
+  ];
+  let body = {};
+  for (let i = 0; i < 2; i++) {
+    if (!attrElems[i][1].value) {
+      reportError(resultElem, "Missing at least one attribute");
+    }
+    body[attrElems[i][0]] = attrElems[i][1].value;
+  }
+  const apiURL = `${APP_URL}/cargo/${cargoIDElem.value}`;
+  execFetch(resultElem, apiURL, "PUT", body);
+}
+
+function deleteACargo() {
+  const resultElem = document.getElementById("delete-a-cargo-result");
+  const formElem = document.getElementById("delete-cargo-id");
+  if (!formElem.value) {
+    reportError(resultElem, "Missing Cargo ID");
+  }
+  const apiURL = `${APP_URL}/cargo/${formElem.value}`;
+  execFetch(resultElem, apiURL, "DELETE");
+}
+
+function assignCargotoBoat() {
+  const resultElem = document.getElementById("assign-cargo-result");
+  const cargoElem = document.getElementById("assign-cargo-id");
+  const boatElem = document.getElementById("assign-boat-id");
+  if (!boatElem.value || !cargoElem.value) {
+    reportError(resultElem, "Missing Boat ID or Cargo ID");
+  }
+  const apiURL = `${APP_URL}/boats/${boatElem.value}/cargo/${cargoElem.value}`;
+  execFetch(resultElem, apiURL, "PUT");
+}
+
+function removeCargofromBoat() {
+  const resultElem = document.getElementById("remove-cargo-result");
+  const cargoElem = document.getElementById("remove-cargo-id");
+  const boatElem = document.getElementById("remove-boat-id");
+  if (!boatElem.value || !cargoElem.value) {
+    reportError(resultElem, "Missing Boat ID or Cargo ID");
+  }
+  const apiURL = `${APP_URL}/boats/${boatElem.value}/cargo/${cargoElem.value}`;
   execFetch(resultElem, apiURL, "DELETE");
 }
