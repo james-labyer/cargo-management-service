@@ -19,6 +19,23 @@ html {
   background-color: var(--background-color);
 }
 
+fieldset {
+  border: 1px solid var(--border-color);
+  border-radius: 2px;
+  margin-top: 10px;
+}
+
+fieldset p,
+fieldset label,
+fieldset input {
+  margin: 10px 0 10px 0;
+}
+
+h1 {
+  border-bottom: 3px solid var(--border-color);
+  margin-right: 15px;
+}
+
 #navbar {
   position: fixed;
   width: 400px;
@@ -60,16 +77,14 @@ header {
   padding-bottom: 15px;
 }
 
-h1 {
-  border-bottom: 1px solid var(--border-color);
-}
-
 .main-section {
-  border-bottom: 1px solid var(--border-color);
+  /* border-bottom: 1px solid var(--border-color); */
+  margin-right: 15px;
 }
 
 .main-section header {
   font-size: 21px;
+  padding-top: 20px;
 }
 
 .nav-link {
@@ -93,7 +108,7 @@ h1 {
   display: block;
   border-radius: 5px;
   padding: 10px;
-  margin: 10px;
+  margin: 10px 0 0 0;
   background-color: var(--code-color);
 }
 
@@ -103,7 +118,11 @@ h1 {
   border: 1px solid #066b67;
   color: #fff;
   padding: 5px;
-  margin: 10px;
+  margin-bottom: 10px;
+}
+
+.button.solo {
+  margin: 10px 0 0 14px;
 }
 
 #Remove_cargo_from_boat {

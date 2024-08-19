@@ -197,14 +197,10 @@
                 <label id="add-boat-name-label">Name <input id="add-boat-name" type="text"></input></label>
                 <label id="add-boat-type-label">Type <input id="add-boat-type" type="text"></input></label>
                 <label id="add-boat-length-label">Length <input id="add-boat-length" type="number"></input></label>
+                <p></p>
+                <button class="button" onclick="addABoat()">Add Boat</button>
               </fieldset>
             </form>
-            <button
-              class="button"
-              onclick="addABoat()"
-            >
-              Add Boat
-            </button>
           </div>
           <code id="add-boat-result"></code>
         </section>
@@ -215,7 +211,7 @@
           <header>Get all boats</header>
           <div>
             <button
-              class="button"
+              class="button solo"
               onclick="getAllBoats()"
             >
               Get All Boats
@@ -229,13 +225,13 @@
         >
           <header>Get a boat</header>
           <div>
-            <form><fieldset><label id="get-boat-id-label">Boat ID <input id="get-boat-id" type="text" required></input></label></fieldset></form>
-            <button
-              class="button"
-              onclick="getABoat()"
-            >
-              Get A Boat
-            </button>
+            <form>
+              <fieldset>
+                <label id="get-boat-id-label">Boat ID <input id="get-boat-id" type="text" required></input></label>
+                <p></p>
+                <button class="button" onclick="getABoat()">Get A Boat</button>
+              </fieldset>
+            </form>
           </div>
           <code id="get-a-boat-result"></code>
         </section>
@@ -253,14 +249,10 @@
                 <label id="patch-boat-name-label">Name <input id="patch-boat-name" type="text"></input></label>
                 <label id="patch-boat-type-label">Type <input id="patch-boat-type" type="text"></input></label>
                 <label id="patch-boat-length-label">Length <input id="patch-boat-length" type="number"></input></label>
+                <p></p>
+                <button class="button" onclick="patchABoat()">Edit Boat</button>
               </fieldset>
             </form>
-            <button
-              class="button"
-              onclick="patchABoat()"
-            >
-              Edit Boat
-            </button>
           </div>
           <code id="patch-a-boat-result"></code>
         </section>
@@ -278,14 +270,10 @@
                 <label id="put-boat-name-label">Name <input id="put-boat-name" type="text"></input></label>
                 <label id="put-boat-type-label">Type <input id="put-boat-type" type="text"></input></label>
                 <label id="put-boat-length-label">Length <input id="put-boat-length" type="number"></input></label>
+                <p></p>
+                <button class="button" onclick="putABoat()">Update Boat</button>
               </fieldset>
             </form>
-            <button
-              class="button"
-              onclick="putABoat()"
-            >
-              Update Boat
-            </button>
           </div>
           <code id="put-a-boat-result"></code>
         </section>
@@ -299,14 +287,10 @@
               <fieldset>
                 <p>Enter the ID of a boat you own</p>
                 <label id="delete-boat-id-label">Boat ID <input id="delete-boat-id" type="text" required></input></label>
+                <p></p>
+                <button class="button" onclick="deleteABoat()">Delete Boat</button>
               </fieldset>
             </form>
-            <button
-              class="button"
-              onclick="deleteABoat()"
-            >
-              Delete Boat
-            </button>
           </div>
           <code id="delete-a-boat-result"></code>
         </section>
@@ -322,14 +306,10 @@
                 <p>Please provide values for both of the following fields:</p>
                 <label id="add-cargo-item-label">Item <input id="add-cargo-item" type="text"></input></label>
                 <label id="add-cargo-volume-label">Volume <input id="add-cargo-volume" type="number"></input></label>
+                <p></p>
+                <button class="button" onclick="addACargo()">Add Cargo</button>
               </fieldset>
             </form>
-            <button
-              class="button"
-              onclick="addACargo()"
-            >
-              Add Cargo
-            </button>
           </div>
           <code id="add-cargo-result"></code>
         </section>
@@ -339,13 +319,13 @@
         >
           <header>Get a cargo</header>
           <div>
-            <form><fieldset><label id="get-cargo-id-label">Cargo ID <input id="get-cargo-id" type="text" required></input></label></fieldset></form>
-            <button
-              class="button"
-              onclick="getACargo()"
-            >
-              Get A Cargo
-            </button>
+            <form>
+              <fieldset>
+                <label id="get-cargo-id-label">Cargo ID <input id="get-cargo-id" type="text" required></input></label>
+                <p></p>
+                <button class="button" onclick="getACargo()">Get A Cargo</button>
+              </fieldset>
+            </form>
           </div>
           <code id="get-a-cargo-result"></code>
         </section>
@@ -356,7 +336,7 @@
           <header>Get all cargo</header>
           <div>
             <button
-              class="button"
+              class="button solo"
               onclick="getAllCargo()"
             >
               Get All Cargo
@@ -377,14 +357,10 @@
                 <p>Please provide new values for at least one of the following fields:</p>
                 <label id="patch-cargo-item-label">Item <input id="patch-cargo-item" type="text"></input></label>
                 <label id="patch-cargo-volume-label">Volume <input id="patch-cargo-volume" type="number"></input></label>
+                <p></p>
+                <button class="button" onclick="patchACargo()">Edit Cargo</button>
               </fieldset>
             </form>
-            <button
-              class="button"
-              onclick="patchACargo()"
-            >
-              Edit Cargo
-            </button>
           </div>
           <code id="patch-a-cargo-result"></code>
         </section>
@@ -401,14 +377,10 @@
                 <p>Please provide new values for both of the following fields:</p>
                 <label id="put-cargo-item-label">Item <input id="put-cargo-item" type="text"></input></label>
                 <label id="put-cargo-volume-label">Volume <input id="put-cargo-volume" type="number"></input></label>
+                <p></p>
+                <button class="button" onclick="putACargo()">Update Cargo</button>
               </fieldset>
             </form>
-            <button
-              class="button"
-              onclick="putACargo()"
-            >
-              Update Cargo
-            </button>
           </div>
           <code id="put-a-cargo-result"></code>
         </section>
@@ -422,14 +394,10 @@
               <fieldset>
                 <p>Enter the ID of a cargo you own</p>
                 <label id="delete-cargo-id-label">Cargo ID <input id="delete-cargo-id" type="text" required></input></label>
+                <p></p>
+                <button class="button" onclick="deleteACargo()">Delete Cargo</button>
               </fieldset>
             </form>
-            <button
-              class="button"
-              onclick="deleteACargo()"
-            >
-              Delete Cargo
-            </button>
           </div>
           <code id="delete-a-cargo-result"></code>
         </section>
@@ -446,14 +414,10 @@
                 <label id="assign-cargo-id-label">Cargo ID <input id="assign-cargo-id" type="text" required></input></label>
                 <p>Enter the ID of a boat you own</p>
                 <label id="assign-boat-id-label">Boat ID <input id="assign-boat-id" type="text" required></input></label>
+                <p></p>
+                <button class="button" onclick="assignCargotoBoat()">Assign Cargo</button>
               </fieldset>
             </form>
-            <button
-              class="button"
-              onclick="assignCargotoBoat()"
-            >
-              Assign Cargo
-            </button>
           </div>
           <code id="assign-cargo-result"></code>
         </section>
@@ -469,14 +433,10 @@
                 <label id="remove-cargo-id-label">Cargo ID <input id="remove-cargo-id" type="text" required></input></label>
                 <p>Enter the ID of a boat you own</p>
                 <label id="remove-boat-id-label">Boat ID <input id="remove-boat-id" type="text" required></input></label>
+                <p></p>
+                <button class="button" onclick="removeCargofromBoat()">Remove Cargo</button>
               </fieldset>
             </form>
-            <button
-              class="button"
-              onclick="removeCargofromBoat()"
-            >
-              Remove Cargo
-            </button>
           </div>
           <code id="remove-cargo-result"></code>
         </section>
